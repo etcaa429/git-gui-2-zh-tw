@@ -1,12 +1,10 @@
 ### Git GUI 主畫面中文化  
 
-[Git GUI 主畫面](https://github.com/etcaa429/git-gui-2-zh-tw/2.49.0-to-zh-tw/pic
-/Git-GUI-main-win-1.png)  
+![Git GUI 主畫面](/pic/Git-GUI-main-win-1.png)  
 
 ### Git GUI 呼叫外部Tcl/Tk 功能  
 
-[Git GUI 主畫面外部Tcl/Tk功能](https://github.com/etcaa429/git-gui-2-zh-tw/2.49.0-to-zh-tw/pic
-/Git-GUI-main-win-2.png  
+![Git GUI 主畫面外部Tcl/Tk功能](/pic/Git-GUI-main-win-2.png)  
 
 ### 版本變革  
 
