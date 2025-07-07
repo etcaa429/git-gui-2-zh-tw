@@ -25,6 +25,8 @@
 
 ![Git GUI 主畫面外部Tcl/Tk功能](pic/Git-GUI-main-win-2.png)  
 
+![Git目錄中.tcl檔案位置](/git-dir-tree.txt)  
+
 ### 中文化注意事項  
 
  - Git工具源於UNIX作業系統，相關文件檔案編碼**必須**使用ANSI格式儲存。  
