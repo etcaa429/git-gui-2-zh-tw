@@ -25,7 +25,7 @@
 
 ![Git GUI 主畫面外部Tcl/Tk功能](pic/Git-GUI-main-win-2.png)  
 
-![Git目錄中.tcl檔案位置](git-dir-tree.txt) 
+[Git目錄中.tcl檔案位置](git-dir-tree.txt) 
 
 ### 中文化注意事項  
 
