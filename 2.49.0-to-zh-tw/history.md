@@ -1,0 +1,5 @@
+ - 2025-07-06中文化程度  
+     - git-gui.tcl主檔案內所有有關英文字串翻譯成中文。  
+     - 其他.tcl檔及Tcl/Tk內建元件尚未翻譯中文。
+ - 2025-07-07中文化程度
+     - pkgIndex.tcl, auto.tcl, clock.tcl, history.tcl, init.tcl, package.tcl, choose_repository.tcl檔案英文字串翻譯成中文。
