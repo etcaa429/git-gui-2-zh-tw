@@ -1,0 +1,199 @@
+Git目錄中所有.tcl檔案位置
+\Git\mingw64
+│  
+├─lib
+│  ├─reg1.3
+│  │      pkgIndex.tcl
+│  │      
+│  ├─tcl8.6
+│  │  │  auto.tcl
+│  │  │  clock.tcl
+│  │  │  history.tcl
+│  │  │  init.tcl
+│  │  │  package.tcl
+│  │  │  parray.tcl
+│  │  │  safe.tcl
+│  │  │  tm.tcl
+│  │  │  word.tcl
+│  │  │  
+│  │  ├─http1.0
+│  │  │      http.tcl
+│  │  │      pkgIndex.tcl
+│  │  │      
+│  │  └─opt0.4
+│  │          optparse.tcl
+│  │          pkgIndex.tcl
+│  │          
+│  ├─thread2.8.8
+│  │      pkgIndex.tcl
+│  │      ttrace.tcl
+│  │      
+│  └─tk8.6
+│      │  bgerror.tcl
+│      │  button.tcl
+│      │  choosedir.tcl
+│      │  clrpick.tcl
+│      │  comdlg.tcl
+│      │  console.tcl
+│      │  dialog.tcl
+│      │  entry.tcl
+│      │  focus.tcl
+│      │  fontchooser.tcl
+│      │  iconlist.tcl
+│      │  icons.tcl
+│      │  listbox.tcl
+│      │  megawidget.tcl
+│      │  menu.tcl
+│      │  mkpsenc.tcl
+│      │  msgbox.tcl
+│      │  obsolete.tcl
+│      │  optMenu.tcl
+│      │  palette.tcl
+│      │  panedwindow.tcl
+│      │  pkgIndex.tcl
+│      │  safetk.tcl
+│      │  scale.tcl
+│      │  scrlbar.tcl
+│      │  spinbox.tcl
+│      │  tearoff.tcl
+│      │  text.tcl
+│      │  tk.tcl
+│      │  tkfbox.tcl
+│      │  unsupported.tcl
+│      │  xmfbox.tcl
+│      │  
+│      ├─demos
+│      │      anilabel.tcl
+│      │      aniwave.tcl
+│      │      arrow.tcl
+│      │      bind.tcl
+│      │      bitmap.tcl
+│      │      button.tcl
+│      │      check.tcl
+│      │      clrpick.tcl
+│      │      colors.tcl
+│      │      combo.tcl
+│      │      cscroll.tcl
+│      │      ctext.tcl
+│      │      dialog1.tcl
+│      │      dialog2.tcl
+│      │      entry1.tcl
+│      │      entry2.tcl
+│      │      entry3.tcl
+│      │      filebox.tcl
+│      │      floor.tcl
+│      │      fontchoose.tcl
+│      │      form.tcl
+│      │      goldberg.tcl
+│      │      hscale.tcl
+│      │      icon.tcl
+│      │      image1.tcl
+│      │      image2.tcl
+│      │      items.tcl
+│      │      knightstour.tcl
+│      │      label.tcl
+│      │      labelframe.tcl
+│      │      mclist.tcl
+│      │      menu.tcl
+│      │      menubu.tcl
+│      │      msgbox.tcl
+│      │      paned1.tcl
+│      │      paned2.tcl
+│      │      pendulum.tcl
+│      │      plot.tcl
+│      │      puzzle.tcl
+│      │      radio.tcl
+│      │      ruler.tcl
+│      │      sayings.tcl
+│      │      search.tcl
+│      │      spin.tcl
+│      │      states.tcl
+│      │      style.tcl
+│      │      text.tcl
+│      │      textpeer.tcl
+│      │      toolbar.tcl
+│      │      tree.tcl
+│      │      ttkbut.tcl
+│      │      ttkmenu.tcl
+│      │      ttknote.tcl
+│      │      ttkpane.tcl
+│      │      ttkprogress.tcl
+│      │      ttkscale.tcl
+│      │      twind.tcl
+│      │      unicodeout.tcl
+│      │      vscale.tcl
+│      │      
+│      └─ttk
+│              altTheme.tcl
+│              aquaTheme.tcl
+│              button.tcl
+│              clamTheme.tcl
+│              classicTheme.tcl
+│              combobox.tcl
+│              cursors.tcl
+│              defaults.tcl
+│              entry.tcl
+│              fonts.tcl
+│              menubutton.tcl
+│              notebook.tcl
+│              panedwindow.tcl
+│              progress.tcl
+│              scale.tcl
+│              scrollbar.tcl
+│              sizegrip.tcl
+│              spinbox.tcl
+│              treeview.tcl
+│              ttk.tcl
+│              utils.tcl
+│              vistaTheme.tcl
+│              winTheme.tcl
+│              xpTheme.tcl
+│              
+├─libexec
+│  └─git-core
+│          git-gui.tcl
+│          
+└─share
+    └─git-gui
+        └─lib
+                about.tcl
+                blame.tcl
+                branch.tcl
+                branch_checkout.tcl
+                branch_create.tcl
+                branch_delete.tcl
+                branch_rename.tcl
+                browser.tcl
+                checkout_op.tcl
+                choose_font.tcl
+                choose_repository.tcl
+                choose_rev.tcl
+                chord.tcl
+                class.tcl
+                commit.tcl
+                console.tcl
+                database.tcl
+                date.tcl
+                diff.tcl
+                encoding.tcl
+                error.tcl
+                index.tcl
+                line.tcl
+                logo.tcl
+                merge.tcl
+                mergetool.tcl
+                option.tcl
+                remote.tcl
+                remote_add.tcl
+                remote_branch_delete.tcl
+                search.tcl
+                shortcut.tcl
+                spellcheck.tcl
+                sshkey.tcl
+                status_bar.tcl
+                themed.tcl
+                tools.tcl
+                tools_dlg.tcl
+                transport.tcl
+                win32.tcl
+                
