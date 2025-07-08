@@ -6,28 +6,28 @@ proc check_brackets {filename} {
     close $f
 
     set line_num 1
-    set brace_count 0  ;# èŠ±æ‹¬è™Ÿè¨ˆæ•¸å™¨ { }
-    set paren_count 0  ;# åœ“æ‹¬è™Ÿè¨ˆæ•¸å™¨ ( )
-    set error_lines [list]  ;# è¨˜éŒ„å¯èƒ½æœ‰å•é¡Œçš„è¡Œ
+    set brace_count 0  ;# ªá¬A¸¹­p¼Æ¾¹ { }
+    set paren_count 0  ;# ¶ê¬A¸¹­p¼Æ¾¹ ( )
+    set error_lines [list]  ;# °O¿ı¥i¯à¦³°İÃDªº¦æ
 
-    # é€è¡Œæª¢æŸ¥æ‹¬è™ŸåŒ¹é…
+    # ³v¦æÀË¬d¬A¸¹¤Ç°t
     foreach line [split $content \n] {
-        # ç§»é™¤è¨»é‡‹å’Œå­—ç¬¦ä¸²ï¼Œé¿å…å¹²æ“¾æª¢æ¸¬
+        # ²¾°£µùÄÀ©M¦r²Å¦ê¡AÁ×§K¤zÂZÀË´ú
         set clean_line [regsub -all {#.*$} $line ""]
         set clean_line [regsub -all {\"[^\"]*\"} $clean_line ""]
         set clean_line [regsub -all {'[^']*'} $clean_line ""]
 
-        # çµ±è¨ˆç•¶å‰è¡Œçš„æ‹¬è™Ÿæ•¸é‡
-        set open_braces [llength [regexp -all -inline \{ $clean_line]]
-        set close_braces [llength [regexp -all -inline \} $clean_line]]
-        set open_parens [llength [regexp -all -inline {\\(} $clean_line]]
-        set close_parens [llength [regexp -all -inline {\\)} $clean_line]]
+        # ²Î­p·í«e¦æªº¬A¸¹¼Æ¶q
+        set open_braces [llength [regexp -all -inline {\{} $clean_line]]
+        set close_braces [llength [regexp -all -inline {\}} $clean_line]]
+        set open_parens [llength [regexp -all -inline "\\(" $clean_line]]
+        set close_parens [llength [regexp -all -inline "\\)" $clean_line]]
 
-        # æ›´æ–°ç¸½è¨ˆæ•¸å™¨
+        # §ó·sÁ`­p¼Æ¾¹
         incr brace_count [expr {$open_braces - $close_braces}]
         incr paren_count [expr {$open_parens - $close_parens}]
 
-        # è¨˜éŒ„å¯èƒ½æœ‰å•é¡Œçš„è¡Œï¼ˆæ‹¬è™Ÿä¸å¹³è¡¡ï¼‰
+        # °O¿ı¥i¯à¦³°İÃDªº¦æ¡]¬A¸¹¤£¥­¿Å¡^
         if {$open_braces != $close_braces || $open_parens != $close_parens} {
             lappend error_lines [list $line_num $line]
         }
@@ -35,23 +35,23 @@ proc check_brackets {filename} {
         incr line_num
     }
 
-    # è¼¸å‡ºçµæœ
-    puts "æ‹¬è™Ÿçµ±è¨ˆçµæœï¼š"
-    puts "èŠ±æ‹¬è™Ÿï¼šå·¦ç¸½æ•¸-[expr {$brace_count > 0 ? $brace_count : 0}] å³ç¸½æ•¸-[expr {$brace_count < 0 ? abs($brace_count) : 0}]"
-    puts "åœ“æ‹¬è™Ÿï¼šå·¦ç¸½æ•¸-[expr {$paren_count > 0 ? $paren_count : 0}] å³ç¸½æ•¸-[expr {$paren_count < 0 ? abs($paren_count) : 0}]"
+    # ¿é¥Xµ²ªG
+    puts "¬A¸¹²Î­pµ²ªG¡G"
+    puts "ªá¬A¸¹¡G¥ªÁ`¼Æ-[expr {$brace_count > 0 ? $brace_count : 0}] ¥kÁ`¼Æ-[expr {$brace_count < 0 ? abs($brace_count) : 0}]"
+    puts "¶ê¬A¸¹¡G¥ªÁ`¼Æ-[expr {$paren_count > 0 ? $paren_count : 0}] ¥kÁ`¼Æ-[expr {$paren_count < 0 ? abs($paren_count) : 0}]"
 
     if {$brace_count != 0 || $paren_count != 0} {
-        puts "âŒ æ‹¬è™Ÿä¸åŒ¹é…"
+        puts "? ¬A¸¹¤£¤Ç°t"
         if {[llength $error_lines] > 0} {
-            puts "\nå¯èƒ½æœ‰å•é¡Œçš„è¡Œï¼š"
+            puts "\n¥i¯à¦³°İÃDªº¦æ¡G"
             foreach {num text} $error_lines {
-                puts "è¡Œè™Ÿ $num: [string range $text 0 70]..."  ;# é¡¯ç¤ºå‰70å€‹å­—ç¬¦
+                puts "¦æ¸¹ $num: [string range $text 0 70]..."  ;# Åã¥Ü«e70­Ó¦r²Å
             }
         }
     } else {
-        puts "âœ… æ‹¬è™ŸåŒ¹é…æ­£å¸¸"
+        puts "? ¬A¸¹¤Ç°t¥¿±`"
     }
 }
 
-# èª¿ç”¨æª¢æ¸¬
+# ½Õ¥ÎÀË´ú
 check_brackets "C:/Program Files/Git/mingw64/lib/tk8.6/console.tcl"
