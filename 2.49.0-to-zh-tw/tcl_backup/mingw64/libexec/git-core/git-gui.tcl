@@ -1,9 +1,10 @@
 #!/bin/sh
+# -*- coding: utf-8 -*-
 # Tcl ignores the next line -*- tcl -*- \
  if test "z$*" = zversion \
  || test "z$*" = z--version; \
  then \
-	echo 'git-gui version 0.21.GITGUI'; \
+	echo 'git-gui ç‰ˆæœ¬ 0.21.GITGUI'; \
 	exit; \
  fi; \
  argv0=$0; \
@@ -11,20 +12,16 @@
 
 set appvers {0.21.GITGUI}
 set copyright [string map [list (c) \u00a9] {
-Copyright (c) 2006-2010 Shawn Pearce, et. al.
+ç‰ˆæ¬Šæ‰€æœ‰ c 2006-2010 Shawn Pearce åŠå…¶ä»–è²¢ç»è€…ã€‚
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+æœ¬ç¨‹åºæ˜¯è‡ªç”±è»Ÿä»¶ï¼›æ‚¨å¯ä»¥éµç…§è‡ªç”±è»Ÿä»¶åŸºé‡‘æœƒç™¼ä½ˆçš„ GNU é€šç”¨å…¬å…±è¨±å¯è­‰æ¢æ¬¾ï¼Œ
+é‡æ–°ç™¼ä½ˆå’Œ/æˆ–ä¿®æ”¹æœ¬ç¨‹åºã€‚è¨±å¯è­‰ç‰ˆæœ¬ç‚ºç¬¬ 2 ç‰ˆï¼Œæˆ–è€…ï¼ˆæ ¹æ“šæ‚¨çš„é¸æ“‡ï¼‰ä»»ä½•æ›´æ–°çš„ç‰ˆæœ¬ã€‚
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+æœ¬ç¨‹åºçš„ç™¼ä½ˆæ—¨åœ¨å¸Œæœ›å®ƒèƒ½æœ‰ç”¨ï¼Œä½†ä¸æä¾›ä»»ä½•æ“”ä¿ï¼›ç”šè‡³æ²’æœ‰éš±å«çš„é©éŠ·æ€§æˆ–ç‰¹å®šç”¨é€”é©ç”¨æ€§çš„æ“”ä¿ã€‚
+è©³æƒ…è«‹åƒé–± GNU é€šç”¨å…¬å…±è¨±å¯è­‰ã€‚
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, see <https://www.gnu.org/licenses/>.}]
+æ‚¨æ‡‰è©²å·²ç¶“éš¨æœ¬ç¨‹åºæ”¶åˆ°äº†ä¸€ä»½ GNU é€šç”¨å…¬å…±è¨±å¯è­‰çš„å‰¯æœ¬ï¼›
+å¦‚æœæ²’æœ‰ï¼Œè«‹æŸ¥é–± <https://www.gnu.org/licenses/>ã€‚}]
 
 ######################################################################
 ##
@@ -37,7 +34,7 @@ if {[catch {package require Tcl 8.5} err]
 	tk_messageBox \
 		-icon error \
 		-type ok \
-		-title "git-gui: ÄY­«¿ù»~" \
+		-title "git-gui: åš´é‡éŒ¯èª¤" \
 		-message $err
 	exit 1
 }
@@ -336,7 +333,7 @@ proc gitexec {args} {
 	global _gitexec
 	if {$_gitexec eq {}} {
 		if {[catch {set _gitexec [git --exec-path]} err]} {
-			error "¥¼¦w¸Ë Git¡H\n\n$err"
+			error "æœªå®‰è£ Gitï¼Ÿ\n\n$err"
 		}
 		set _gitexec [file normalize $_gitexec]
 	}
@@ -505,7 +502,7 @@ proc _git_cmd {name} {
 			#!*sh     { set i sh     }
 			#!*perl   { set i perl   }
 			#!*python { set i python }
-			default   { error "Git-$name ¤£¤ä´©¡G $s" }
+			default   { error "Git-$name ä¸æ”¯æ´ï¼š $s" }
 			}
 
 			upvar #0 _$i interp
@@ -513,7 +510,7 @@ proc _git_cmd {name} {
 				set interp [_which $i]
 			}
 			if {$interp eq {}} {
-				error "Git-$name »İ­n $i (PATH¤¤¨S¦³)"
+				error "Git-$name éœ€è¦ $i (PATHä¸­æ²’æœ‰)"
 			}
 			set v [concat [list $interp] [lrange $s 1 end] [list $p]]
 		} else {
@@ -861,7 +858,7 @@ proc apply_config {} {
 				font configure $font -weight normal
 			}
 			} err]} {
-			error_popup [strcat [mc "¦b %s ¤¤«ü©wªº¦r«¬µL®Ä¡G" "gui.$name"] "\n\n$err"]
+			error_popup [strcat [mc "åœ¨ %s ä¸­æŒ‡å®šçš„å­—å‹ç„¡æ•ˆï¼š" "gui.$name"] "\n\n$err"]
 		}
 		foreach {cn cv} [font configure $font] {
 			font configure ${font}bold $cn $cv
@@ -916,8 +913,8 @@ set default_config(gui.usettk) 1
 set default_config(gui.warndetachedcommit) 1
 set default_config(gui.tabsize) 8
 set font_descs {
-	{fontui   font_ui   {mc "¥D¦r«¬"}}
-	{fontdiff font_diff {mc "®t²§¹ï¤ñ / ±±¨î¥x¦r«¬"}}
+	{fontui   font_ui   {mc "ä¸»å­—å‹"}}
+	{fontdiff font_diff {mc "å·®ç•°å°æ¯” / æ§åˆ¶å°å­—å‹"}}
 }
 set default_config(gui.stageuntracked) ask
 set default_config(gui.displayuntracked) true
@@ -932,8 +929,8 @@ if {$_git eq {}} {
 	tk_messageBox \
 		-icon error \
 		-type ok \
-		-title [mc "git-gui: ÄY­«¿ù»~"] \
-		-message [mc "PATH³]©w¤¤¨S¦³git¡C"]
+		-title [mc "git-gui: åš´é‡éŒ¯èª¤"] \
+		-message [mc "PATHè¨­å®šä¸­æ²’æœ‰gitã€‚"]
 	exit 1
 }
 
@@ -946,12 +943,12 @@ if {[catch {set _git_version [git --version]} err]} {
 	tk_messageBox \
 		-icon error \
 		-type ok \
-		-title [mc "git-gui: ÄY­«¿ù»~"] \
-		-message "µLªk½T©w Git ª©¥»¡G
+		-title [mc "git-gui: åš´é‡éŒ¯èª¤"] \
+		-message "ç„¡æ³•ç¢ºå®š Git ç‰ˆæœ¬ï¼š
 
 $err
 
-[appname] »İ­n Git 1.5.0 ¥H«áª©¥»¡C"
+[appname] éœ€è¦ Git 1.5.0 ä»¥å¾Œç‰ˆæœ¬ã€‚"
 	exit 1
 }
 if {![regsub {^git version } $_git_version {} _git_version]} {
@@ -959,8 +956,8 @@ if {![regsub {^git version } $_git_version {} _git_version]} {
 	tk_messageBox \
 		-icon error \
 		-type ok \
-		-title [mc "git-gui: ÄY­«¿ù»~"] \
-		-message [strcat [mc "µLªk¸ÑªR Git ª©¥»¦r²Å¦ê¡G"] "\n\n$_git_version"]
+		-title [mc "git-gui: åš´é‡éŒ¯èª¤"] \
+		-message [strcat [mc "ç„¡æ³•è§£æ Git ç‰ˆæœ¬å­—ç¬¦ä¸²ï¼š"] "\n\n$_git_version"]
 	exit 1
 }
 
@@ -985,13 +982,13 @@ if {![regexp {^[1-9]+(\.[0-9]+)+$} $_git_version]} {
 		-type yesno \
 		-default no \
 		-title "[appname]: warning" \
-		-message [mc "µLªk½T©w Git ª©¥»¡C
+		-message [mc "ç„¡æ³•ç¢ºå®š Git ç‰ˆæœ¬ã€‚
 
-%s «ÅºÙ¦Û¨­ª©¥»¬O '%s'.
+%s å®£ç¨±è‡ªèº«ç‰ˆæœ¬æ˜¯ '%s'.
 
-%s »İ­n¦Ü¤Ö Git 1.5.0 «á¤§«áª©¥»¡C
+%s éœ€è¦è‡³å°‘ Git 1.5.0 å¾Œä¹‹å¾Œç‰ˆæœ¬ã€‚
 
-°²³] '%s' ¬O 1.5.0 ª©¡H
+å‡è¨­ '%s' æ˜¯ 1.5.0 ç‰ˆï¼Ÿ
 " $_git $_real_git_version [appname] $_real_git_version]] eq {yes}} {
 		set _git_version 1.5.0
 	} else {
@@ -1049,10 +1046,10 @@ if {[git-version < 1.5]} {
 	tk_messageBox \
 		-icon error \
 		-type ok \
-		-title [mc "git-gui: ÄY­«¿ù»~"] \
-		-message "[appname] »İ­n Git 1.5.0 ©Î¤§«áª©¥»¡C
+		-title [mc "git-gui: åš´é‡éŒ¯èª¤"] \
+		-message "[appname] éœ€è¦ Git 1.5.0 æˆ–ä¹‹å¾Œç‰ˆæœ¬ã€‚
 
-§A¥¿¦b¨Ï¥Î [git-version]:
+ä½ æ­£åœ¨ä½¿ç”¨ [git-version]:
 
 [git --version]"
 	exit 1
@@ -1068,7 +1065,7 @@ if {[catch {set fd [open $idx r]} err]} {
 	tk_messageBox \
 		-icon error \
 		-type ok \
-		-title [mc "git-gui: ÄY­«¿ù»~"] \
+		-title [mc "git-gui: åš´é‡éŒ¯èª¤"] \
 		-message $err
 	exit 1
 }
@@ -1285,7 +1282,7 @@ if {$_gitdir eq "."} {
 
 if {![file isdirectory $_gitdir]} {
 	catch {wm withdraw .}
-	error_popup [strcat [mc "§ä¤£¨ìGit ¥Ø¿ı¡G"] "\n\n$_gitdir"]
+	error_popup [strcat [mc "æ‰¾ä¸åˆ°Git ç›®éŒ„ï¼š"] "\n\n$_gitdir"]
 	exit 1
 }
 # _gitdir exists, so try loading the config
@@ -1315,7 +1312,7 @@ if {$_prefix ne {}} {
 	}
 	if {[catch {cd $cdup} err]} {
 		catch {wm withdraw .}
-		error_popup [strcat [mc "µLªk²¾°Ê¨ì¤u§@¥Ø¿ı³»ºİ¡G"] "\n\n$err"]
+		error_popup [strcat [mc "ç„¡æ³•ç§»å‹•åˆ°å·¥ä½œç›®éŒ„é ‚ç«¯ï¼š"] "\n\n$err"]
 		exit 1
 	}
 	set _gitworktree [pwd]
@@ -1323,7 +1320,7 @@ if {$_prefix ne {}} {
 } elseif {![is_enabled bare]} {
 	if {[is_bare]} {
 		catch {wm withdraw .}
-		error_popup [strcat [mc "µLªk¨Ï¥Î»r¦sÀx®w¡G"] "\n\n$_gitdir"]
+		error_popup [strcat [mc "ç„¡æ³•ä½¿ç”¨è£¸å­˜å„²åº«ï¼š"] "\n\n$_gitdir"]
 		exit 1
 	}
 	if {$_gitworktree eq {}} {
@@ -1331,7 +1328,7 @@ if {$_prefix ne {}} {
 	}
 	if {[catch {cd $_gitworktree} err]} {
 		catch {wm withdraw .}
-		error_popup [strcat [mc "¨S¦³¤u§@¥Ø¿ı"] " $_gitworktree:\n\n$err"]
+		error_popup [strcat [mc "æ²’æœ‰å·¥ä½œç›®éŒ„"] " $_gitworktree:\n\n$err"]
 		exit 1
 	}
 	set _gitworktree [pwd]
@@ -1505,7 +1502,7 @@ proc rescan {after {honor_trustmtime 1}} {
 		rescan_stage2 {} $after
 	} else {
 		set rescan_active 1
-		ui_status [mc "§ó·sÀÉ®×ª¬ºA..."]
+		ui_status [mc "æ›´æ–°æª”æ¡ˆç‹€æ…‹..."]
 		set fd_rf [git_read update-index \
 			-q \
 			--unmerged \
@@ -1549,7 +1546,7 @@ proc rescan_stage2 {fd after} {
 	set buf_rlo {}
 
 	set rescan_active 2
-	ui_status [mc "±½´y­×§ï¹LªºÀÉ®×..."]
+	ui_status [mc "æƒæä¿®æ”¹éçš„æª”æ¡ˆ..."]
 	if {[git-version >= "1.7.2"]} {
 		set fd_di [git_read diff-index --cached --ignore-submodules=dirty -z [PARENT]]
 	} else {
@@ -1633,7 +1630,7 @@ proc run_prepare_commit_msg_hook {} {
 		return 0;
 	}
 
-	ui_status [mc "¥¿¦b½Õ¥Î prepare-commit-msg ¹_¤l..."]
+	ui_status [mc "æ­£åœ¨èª¿ç”¨ prepare-commit-msg é‰¤å­..."]
 	set pch_error {}
 
 	fconfigure $fd_ph -blocking 0 -translation binary -eofchar {}
@@ -1650,7 +1647,7 @@ proc prepare_commit_msg_hook_wait {fd_ph} {
 	fconfigure $fd_ph -blocking 1
 	if {[eof $fd_ph]} {
 		if {[catch {close $fd_ph}]} {
-			ui_status [mc "´£¥æ¤w³Q prepare-commit-msg ¹_¤l©Úµ´¡C"]
+			ui_status [mc "æäº¤å·²è¢« prepare-commit-msg é‰¤å­æ‹’çµ•ã€‚"]
 			hook_failed_popup prepare-commit-msg $pch_error
 			catch {file delete [gitdir PREPARE_COMMIT_MSG]}
 			exit 1
@@ -1782,7 +1779,7 @@ proc mapicon {w state path} {
 	global all_icons
 
 	if {[catch {set r $all_icons($state$w)}]} {
-		puts "¿ù»~: ¨S¦³¬° $w ª¬ºA={$state} $path ©w¸q¹Ï¥Ü"
+		puts "éŒ¯èª¤: æ²’æœ‰ç‚º $w ç‹€æ…‹={$state} $path å®šç¾©åœ–ç¤º"
 		return file_plain
 	}
 	return $r
@@ -1792,7 +1789,7 @@ proc mapdesc {state path} {
 	global all_descs
 
 	if {[catch {set r $all_descs($state)}]} {
-		puts "¿ù»~: ¨S¦³¬°ª¬ºA={$state} $path ©w¸q´y­z"
+		puts "éŒ¯èª¤: æ²’æœ‰ç‚ºç‹€æ…‹={$state} $path å®šç¾©æè¿°"
 		return $state
 	}
 	return $r
@@ -1972,7 +1969,7 @@ proc display_all_files {} {
 			if {!$files_warning} {
 				# do not repeatedly warn:
 				set files_warning 1
-				info_popup [mc "¤w¹FÅã¥Ü­­¨î (gui.maxfilesdisplayed = %s) ¡A¥¼Åã¥Ü¥ş³¡ %s ­ÓÀÉ®×¡C" \
+				info_popup [mc "å·²é”é¡¯ç¤ºé™åˆ¶ (gui.maxfilesdisplayed = %s) ï¼Œæœªé¡¯ç¤ºå…¨éƒ¨ %s å€‹æª”æ¡ˆã€‚" \
 					$display_limit [llength $to_display]]
 			}
 			continue
@@ -2096,36 +2093,36 @@ set all_icons(T$ui_workdir) file_statechange
 
 set max_status_desc 0
 foreach i {
-		{__ {mc "¥¼­×§ï"}}
+		{__ {mc "æœªä¿®æ”¹"}}
 
-		{M {mc "¤w­×§ï¡A¥¼¼È¦s"}}
-		{M {mc "¤w¼È¦s«İ´£¥æ"}}
-		{MM {mc "³¡¤À¤w¼È¦s«İ´£¥æ"}}
-		{MD {mc "¤w¼È¦s«İ´£¥æ¡AÀÉ®×¿ò¥¢"}}
+		{M {mc "å·²ä¿®æ”¹ï¼Œæœªæš«å­˜"}}
+		{M {mc "å·²æš«å­˜å¾…æäº¤"}}
+		{MM {mc "éƒ¨åˆ†å·²æš«å­˜å¾…æäº¤"}}
+		{MD {mc "å·²æš«å­˜å¾…æäº¤ï¼Œæª”æ¡ˆéºå¤±"}}
 
-		{T {mc "ÀÉ®×Ãş«¬¤wÅÜ§ó¡A¥¼¼È¦s"}}
-		{MT {mc "ÀÉ®×Ãş«¬¤wÅÜ§ó¡AÂÂÃş«¬¤w¼È¦s«İ´£¥æ"}}
-		{AT {mc "ÀÉ®×Ãş«¬¤wÅÜ§ó¡AÂÂÃş«¬¤w¼È¦s«İ´£¥æ"}}
-		{T {mc "ÀÉ®×Ãş«¬¤wÅÜ§ó¡A¤w¼È¦s"}}
-		{TM {mc "ÀÉ®×Ãş«¬ÅÜ§ó¤w¼È¦s¡A­×§ï¥¼¼È¦s"}}
-		{TD {mc "ÀÉ®×Ãş«¬ÅÜ§ó¤w¼È¦s¡AÀÉ®×¿ò¥¢"}}
+		{T {mc "æª”æ¡ˆé¡å‹å·²è®Šæ›´ï¼Œæœªæš«å­˜"}}
+		{MT {mc "æª”æ¡ˆé¡å‹å·²è®Šæ›´ï¼ŒèˆŠé¡å‹å·²æš«å­˜å¾…æäº¤"}}
+		{AT {mc "æª”æ¡ˆé¡å‹å·²è®Šæ›´ï¼ŒèˆŠé¡å‹å·²æš«å­˜å¾…æäº¤"}}
+		{T {mc "æª”æ¡ˆé¡å‹å·²è®Šæ›´ï¼Œå·²æš«å­˜"}}
+		{TM {mc "æª”æ¡ˆé¡å‹è®Šæ›´å·²æš«å­˜ï¼Œä¿®æ”¹æœªæš«å­˜"}}
+		{TD {mc "æª”æ¡ˆé¡å‹è®Šæ›´å·²æš«å­˜ï¼Œæª”æ¡ˆéºå¤±"}}
 
-		{O {mc "¥¼°lÂÜ¡A¥¼¼È¦s"}}
-		{A {mc "¤w¼È¦s«İ´£¥æ"}}
-		{AM {mc "³¡¤À¤w¼È¦s«İ´£¥æ"}}
-		{AD {mc "¤w¼È¦s«İ´£¥æ¡AÀÉ®×¿ò¥¢"}}
-		{AA {mc "ÀÀ·s¼W"}}
+		{O {mc "æœªè¿½è¹¤ï¼Œæœªæš«å­˜"}}
+		{A {mc "å·²æš«å­˜å¾…æäº¤"}}
+		{AM {mc "éƒ¨åˆ†å·²æš«å­˜å¾…æäº¤"}}
+		{AD {mc "å·²æš«å­˜å¾…æäº¤ï¼Œæª”æ¡ˆéºå¤±"}}
+		{AA {mc "æ“¬æ–°å¢"}}
 
-		{D {mc "¿ò¥¢"}}
-		{D {mc "¤w¼È¦s«İ²¾°£"}}
-		{DO {mc "¤w¼È¦s«İ²¾°£¡A¤´¦s¦b"}}
+		{D {mc "éºå¤±"}}
+		{D {mc "å·²æš«å­˜å¾…ç§»é™¤"}}
+		{DO {mc "å·²æš«å­˜å¾…ç§»é™¤ï¼Œä»å­˜åœ¨"}}
 
-		{U {mc "»İ­n¦X¨Ö¸ÑªR"}}
-		{U {mc "»İ­n¦X¨Ö¸ÑªR"}}
-		{UU {mc "»İ­n¦X¨Ö¸ÑªR"}}
-		{UM {mc "»İ­n¦X¨Ö¸ÑªR"}}
-		{UD {mc "»İ­n¦X¨Ö¸ÑªR"}}
-		{UT {mc "»İ­n¦X¨Ö¸ÑªR"}}
+		{U {mc "éœ€è¦åˆä½µè§£æ"}}
+		{U {mc "éœ€è¦åˆä½µè§£æ"}}
+		{UU {mc "éœ€è¦åˆä½µè§£æ"}}
+		{UM {mc "éœ€è¦åˆä½µè§£æ"}}
+		{UD {mc "éœ€è¦åˆä½µè§£æ"}}
+		{UT {mc "éœ€è¦åˆä½µè§£æ"}}
 	} {
 	set text [eval [lindex $i 1]]
 	if {$max_status_desc < [string length $text]} {
@@ -2170,7 +2167,7 @@ proc do_gitk {revs {is_submodule false}} {
 	set exe [_which gitk -script]
 	set cmd [list [info nameofexecutable] $exe]
 	if {$exe eq {}} {
-		error_popup [mc "PATH³]©w¤¤¨S¦³gitk"]
+		error_popup [mc "PATHè¨­å®šä¸­æ²’æœ‰gitk"]
 	} else {
 		global env
 
@@ -2217,7 +2214,7 @@ proc do_gitk {revs {is_submodule false}} {
 		if {[info exists main_status]} {
 			set status_operation [$::main_status \
 				start \
-				[mc "¶}©l %s... ½Ğµyµ¥..." "gitk"]]
+				[mc "é–‹å§‹ %s... è«‹ç¨ç­‰..." "gitk"]]
 
 			after 3500 [list $status_operation stop]
 		}
@@ -2232,7 +2229,7 @@ proc do_git_gui {} {
 	#
 	set exe [list [_which git]]
 	if {$exe eq {}} {
-		error_popup [mc "PATH³]©w¤¤¨S¦³Git GUI"]
+		error_popup [mc "PATHè¨­å®šä¸­æ²’æœ‰Git GUI"]
 	} else {
 		global env
 		global _gitdir _gitworktree
@@ -2253,7 +2250,7 @@ proc do_git_gui {} {
 
 		set status_operation [$::main_status \
 			start \
-			[mc "¶}©l %s... ½Ğµyµ¥..." "git-gui"]]
+			[mc "é–‹å§‹ %s... è«‹ç¨ç­‰..." "git-gui"]]
 
 		after 3500 [list $status_operation stop]
 	}
@@ -2608,12 +2605,12 @@ proc toggle_or_diff {mode w args} {
 
 		if {$w eq $ui_index} {
 			update_indexinfo \
-				"±q´£¥æ¤¤¨ú®ø¼È¦s [short_path $path]" \
+				"å¾æäº¤ä¸­å–æ¶ˆæš«å­˜ [short_path $path]" \
 				[list $path] \
 				[concat $after {ui_ready;}]
 		} elseif {$w eq $ui_workdir} {
 			update_index \
-				"±N [short_path $path] ·s¼W¦Ü¼È¦s°Ï" \
+				"å°‡ [short_path $path] æ–°å¢è‡³æš«å­˜å€" \
 				[list $path] \
 				[concat $after {ui_ready;}]
 		}
@@ -2735,20 +2732,20 @@ if {[is_MacOSX]} {
 	.mbar add cascade -label Apple -menu .mbar.apple
 	menu .mbar.apple
 }
-.mbar add cascade -label [mc Àx¦s®w] -menu .mbar.repository
-.mbar add cascade -label [mc ½s¿è] -menu .mbar.edit
+.mbar add cascade -label [mc å„²å­˜åº«] -menu .mbar.repository
+.mbar add cascade -label [mc ç·¨è¼¯] -menu .mbar.edit
 if {[is_enabled branch]} {
-	.mbar add cascade -label [mc ¤À¤ä] -menu .mbar.branch
+	.mbar add cascade -label [mc åˆ†æ”¯] -menu .mbar.branch
 }
 if {[is_enabled multicommit] || [is_enabled singlecommit]} {
-	.mbar add cascade -label [mc ´£¥æ@@noun] -menu .mbar.commit
+	.mbar add cascade -label [mc æäº¤@@noun] -menu .mbar.commit
 }
 if {[is_enabled transport]} {
-	.mbar add cascade -label [mc ¦X¨Ö] -menu .mbar.merge
-	.mbar add cascade -label [mc »·ºİ] -menu .mbar.remote
+	.mbar add cascade -label [mc åˆä½µ] -menu .mbar.merge
+	.mbar add cascade -label [mc é ç«¯] -menu .mbar.remote
 }
 if {[is_enabled multicommit] || [is_enabled singlecommit]} {
-	.mbar add cascade -label [mc ¤u¨ã] -menu .mbar.tools
+	.mbar add cascade -label [mc å·¥å…·] -menu .mbar.tools
 }
 
 # -- Repository Menu
@@ -2757,7 +2754,7 @@ menu .mbar.repository
 
 if {![is_bare]} {
 	.mbar.repository add command \
-		-label [mc "±´¯Á¤u§@°Æ¥»"] \
+		-label [mc "æ¢ç´¢å·¥ä½œå‰¯æœ¬"] \
 		-command {do_explore}
 }
 
@@ -2781,55 +2778,55 @@ if {[is_Windows] || ![is_bare]} {
 }
 
 .mbar.repository add command \
-	-label [mc "ÂsÄı·í«e¤À¤äªºÀÉ®×"] \
+	-label [mc "ç€è¦½ç•¶å‰åˆ†æ”¯çš„æª”æ¡ˆ"] \
 	-command {browser::new $current_branch}
 set ui_browse_current [.mbar.repository index last]
 .mbar.repository add command \
-	-label [mc "ÂsÄı¤À¤äÀÉ®×..."] \
+	-label [mc "ç€è¦½åˆ†æ”¯æª”æ¡ˆ..."] \
 	-command browser_open::dialog
 .mbar.repository add separator
 
 .mbar.repository add command \
-	-label [mc "µøÄ±¤Æ·í«e¤À¤äªº¾ú¥v°O¿ı"] \
+	-label [mc "è¦–è¦ºåŒ–ç•¶å‰åˆ†æ”¯çš„æ­·å²è¨˜éŒ„"] \
 	-command {do_gitk $current_branch}
 set ui_visualize_current [.mbar.repository index last]
 .mbar.repository add command \
-	-label [mc "µøÄ±¤Æ©Ò¦³¤À¤ä¾ú¥v°O¿ı"] \
+	-label [mc "è¦–è¦ºåŒ–æ‰€æœ‰åˆ†æ”¯æ­·å²è¨˜éŒ„"] \
 	-command {do_gitk --all}
 .mbar.repository add separator
 
 proc current_branch_write {args} {
 	global current_branch
 	.mbar.repository entryconf $::ui_browse_current \
-		-label [mc "ÂsÄı %s ªºÀÉ®×" $current_branch]
+		-label [mc "ç€è¦½ %s çš„æª”æ¡ˆ" $current_branch]
 	.mbar.repository entryconf $::ui_visualize_current \
-		-label [mc "µøÄ±¤Æ %s ªº¾ú¥v°O¿ı" $current_branch]
+		-label [mc "è¦–è¦ºåŒ– %s çš„æ­·å²è¨˜éŒ„" $current_branch]
 }
 trace add variable current_branch write current_branch_write
 
 if {[is_enabled multicommit]} {
-	.mbar.repository add command -label [mc "¸ê®Æ®w²Î­p¸ê®Æ"] \
+	.mbar.repository add command -label [mc "è³‡æ–™åº«çµ±è¨ˆè³‡æ–™"] \
 		-command do_stats
 
-	.mbar.repository add command -label [mc "À£ÁY¸ê®Æ®w"] \
+	.mbar.repository add command -label [mc "å£“ç¸®è³‡æ–™åº«"] \
 		-command do_gc
 
-	.mbar.repository add command -label [mc "ÅçÃÒ¸ê®Æ®w"] \
+	.mbar.repository add command -label [mc "é©—è­‰è³‡æ–™åº«"] \
 		-command do_fsck_objects
 
 	.mbar.repository add separator
 
 	if {[is_Cygwin]} {
 		.mbar.repository add command \
-			-label [mc "«Ø¥ß®à­±¹Ï¥Ü"] \
+			-label [mc "å»ºç«‹æ¡Œé¢åœ–ç¤º"] \
 			-command do_cygwin_shortcut
 	} elseif {[is_Windows]} {
 		.mbar.repository add command \
-			-label [mc "«Ø¥ß®à­±¹Ï¥Ü"] \
+			-label [mc "å»ºç«‹æ¡Œé¢åœ–ç¤º"] \
 			-command do_windows_shortcut
 	} elseif {[is_MacOSX]} {
 		.mbar.repository add command \
-			-label [mc "«Ø¥ß®à­±¹Ï¥Ü"] \
+			-label [mc "å»ºç«‹æ¡Œé¢åœ–ç¤º"] \
 			-command do_macosx_app
 	}
 }
@@ -2837,7 +2834,7 @@ if {[is_enabled multicommit]} {
 if {[is_MacOSX]} {
 	proc ::tk::mac::Quit {args} { do_quit }
 } else {
-	.mbar.repository add command -label [mc °h¥X] \
+	.mbar.repository add command -label [mc é€€å‡º] \
 		-command do_quit \
 		-accelerator $M1T-Q
 }
@@ -2845,27 +2842,27 @@ if {[is_MacOSX]} {
 # -- Edit Menu
 #
 menu .mbar.edit
-.mbar.edit add command -label [mc ´_­ì] \
+.mbar.edit add command -label [mc å¾©åŸ] \
 	-command {catch {[focus] edit undo}} \
 	-accelerator $M1T-Z
-.mbar.edit add command -label [mc ­«°µ] \
+.mbar.edit add command -label [mc é‡åš] \
 	-command {catch {[focus] edit redo}} \
 	-accelerator $M1T-Y
 .mbar.edit add separator
-.mbar.edit add command -label [mc °Å¤U] \
+.mbar.edit add command -label [mc å‰ªä¸‹] \
 	-command {catch {tk_textCut [focus]}} \
 	-accelerator $M1T-X
-.mbar.edit add command -label [mc ½Æ»s] \
+.mbar.edit add command -label [mc è¤‡è£½] \
 	-command {catch {tk_textCopy [focus]}} \
 	-accelerator $M1T-C
-.mbar.edit add command -label [mc ¶K¤W] \
+.mbar.edit add command -label [mc è²¼ä¸Š] \
 	-command {catch {tk_textPaste [focus]; [focus] see insert}} \
 	-accelerator $M1T-V
-.mbar.edit add command -label [mc §R°£] \
+.mbar.edit add command -label [mc åˆªé™¤] \
 	-command {catch {[focus] delete sel.first sel.last}} \
 	-accelerator Del
 .mbar.edit add separator
-.mbar.edit add command -label [mc "¥ş¿ï"] \
+.mbar.edit add command -label [mc "å…¨é¸"] \
 	-command {catch {[focus] tag add sel 0.0 end}} \
 	-accelerator $M1T-A
 
@@ -2874,29 +2871,29 @@ menu .mbar.edit
 if {[is_enabled branch]} {
 	menu .mbar.branch
 
-	.mbar.branch add command -label [mc "«Ø¥ß..."] \
+	.mbar.branch add command -label [mc "å»ºç«‹..."] \
 		-command branch_create::dialog \
 		-accelerator $M1T-N
 	lappend disable_on_lock [list .mbar.branch entryconf \
 		[.mbar.branch index last] -state]
 
-	.mbar.branch add command -label [mc "Ã±¥X..."] \
+	.mbar.branch add command -label [mc "ç°½å‡º..."] \
 		-command branch_checkout::dialog \
 		-accelerator $M1T-O
 	lappend disable_on_lock [list .mbar.branch entryconf \
 		[.mbar.branch index last] -state]
 
-	.mbar.branch add command -label [mc "­«©R¦W..."] \
+	.mbar.branch add command -label [mc "é‡å‘½å..."] \
 		-command branch_rename::dialog
 	lappend disable_on_lock [list .mbar.branch entryconf \
 		[.mbar.branch index last] -state]
 
-	.mbar.branch add command -label [mc "§R°£..."] \
+	.mbar.branch add command -label [mc "åˆªé™¤..."] \
 		-command branch_delete::dialog
 	lappend disable_on_lock [list .mbar.branch entryconf \
 		[.mbar.branch index last] -state]
 
-	.mbar.branch add command -label [mc "­«¸m..."] \
+	.mbar.branch add command -label [mc "é‡ç½®..."] \
 		-command merge::reset_hard
 	lappend disable_on_lock [list .mbar.branch entryconf \
 		[.mbar.branch index last] -state]
@@ -2906,9 +2903,9 @@ if {[is_enabled branch]} {
 #
 proc commit_btn_caption {} {
 	if {[is_enabled nocommit]} {
-		return [mc "§¹¦¨"]
+		return [mc "å®Œæˆ"]
 	} else {
-		return [mc ´£¥æ@@verb]
+		return [mc æäº¤@@verb]
 	}
 }
 
@@ -2917,7 +2914,7 @@ if {[is_enabled multicommit] || [is_enabled singlecommit]} {
 
 	if {![is_enabled nocommit]} {
 		.mbar.commit add checkbutton \
-			-label [mc "­×¥¿¤W¤@¦¸´£¥æ"] \
+			-label [mc "ä¿®æ­£ä¸Šä¸€æ¬¡æäº¤"] \
 			-accelerator $M1T-E \
 			-variable commit_type_is_amend \
 			-command do_select_commit_type
@@ -2927,31 +2924,31 @@ if {[is_enabled multicommit] || [is_enabled singlecommit]} {
 		.mbar.commit add separator
 	}
 
-	.mbar.commit add command -label [mc ­«·s±½´y] \
+	.mbar.commit add command -label [mc é‡æ–°æƒæ] \
 		-command ui_do_rescan \
 		-accelerator F5
 	lappend disable_on_lock \
 		[list .mbar.commit entryconf [.mbar.commit index last] -state]
 
-	.mbar.commit add command -label [mc "¼È¦s¦Ü´£¥æ"] \
+	.mbar.commit add command -label [mc "æš«å­˜è‡³æäº¤"] \
 		-command do_add_selection \
 		-accelerator $M1T-T
 	lappend disable_on_lock \
 		[list .mbar.commit entryconf [.mbar.commit index last] -state]
 
-	.mbar.commit add command -label [mc "±N¤w­×§ïªºÀÉ®×¼È¦s¦Ü´£¥æ"] \
+	.mbar.commit add command -label [mc "å°‡å·²ä¿®æ”¹çš„æª”æ¡ˆæš«å­˜è‡³æäº¤"] \
 		-command do_add_all \
 		-accelerator $M1T-I
 	lappend disable_on_lock \
 		[list .mbar.commit entryconf [.mbar.commit index last] -state]
 
-	.mbar.commit add command -label [mc "±q´£¥æ¤¤¨ú®ø¼È¦s"] \
+	.mbar.commit add command -label [mc "å¾æäº¤ä¸­å–æ¶ˆæš«å­˜"] \
 		-command do_unstage_selection \
 		-accelerator $M1T-U
 	lappend disable_on_lock \
 		[list .mbar.commit entryconf [.mbar.commit index last] -state]
 
-	.mbar.commit add command -label [mc "ÁÙ­ìÅÜ§ó"] \
+	.mbar.commit add command -label [mc "é‚„åŸè®Šæ›´"] \
 		-command do_revert_selection \
 		-accelerator $M1T-J
 	lappend disable_on_lock \
@@ -2959,18 +2956,18 @@ if {[is_enabled multicommit] || [is_enabled singlecommit]} {
 
 	.mbar.commit add separator
 
-	.mbar.commit add command -label [mc "Åã¥Ü¸û¤Ö¤W¤U¤å"] \
+	.mbar.commit add command -label [mc "é¡¯ç¤ºè¼ƒå°‘ä¸Šä¸‹æ–‡"] \
 		-command show_less_context \
 		-accelerator $M1T-\-
 
-	.mbar.commit add command -label [mc "Åã¥Ü§ó¦h¤W¤U¤å"] \
+	.mbar.commit add command -label [mc "é¡¯ç¤ºæ›´å¤šä¸Šä¸‹æ–‡"] \
 		-command show_more_context \
 		-accelerator $M1T-=
 
 	.mbar.commit add separator
 
 	if {![is_enabled nocommitmsg]} {
-		.mbar.commit add command -label [mc "Ã±¸p"] \
+		.mbar.commit add command -label [mc "ç°½ç½²"] \
 			-command do_signoff \
 			-accelerator $M1T-S
 	}
@@ -2986,12 +2983,12 @@ if {[is_enabled multicommit] || [is_enabled singlecommit]} {
 #
 if {[is_enabled branch]} {
 	menu .mbar.merge
-	.mbar.merge add command -label [mc "¥»¦a¦X¨Ö..."] \
+	.mbar.merge add command -label [mc "æœ¬åœ°åˆä½µ..."] \
 		-command merge::dialog \
 		-accelerator $M1T-M
 	lappend disable_on_lock \
 		[list .mbar.merge entryconf [.mbar.merge index last] -state]
-	.mbar.merge add command -label [mc "¤¤¤î¦X¨Ö..."] \
+	.mbar.merge add command -label [mc "ä¸­æ­¢åˆä½µ..."] \
 		-command merge::reset_hard
 	lappend disable_on_lock \
 		[list .mbar.merge entryconf [.mbar.merge index last] -state]
@@ -3003,15 +3000,15 @@ if {[is_enabled transport]} {
 	menu .mbar.remote
 
 	.mbar.remote add command \
-		-label [mc "·s«Ø..."] \
+		-label [mc "æ–°å»º..."] \
 		-command remote_add::dialog \
 		-accelerator $M1T-A
 	.mbar.remote add command \
-		-label [mc "±À°e..."] \
+		-label [mc "æ¨é€..."] \
 		-command do_push_anywhere \
 		-accelerator $M1T-P
 	.mbar.remote add command \
-		-label [mc "§R°£¤À¤ä..."] \
+		-label [mc "åˆªé™¤åˆ†æ”¯..."] \
 		-command remote_branch_delete::dialog
 }
 
@@ -3021,7 +3018,7 @@ if {[is_MacOSX]} {
 	# -- Edit Menu
 	#
 	.mbar.edit add separator
-	.mbar.edit add command -label [mc "¿ï¶µ..."] \
+	.mbar.edit add command -label [mc "é¸é …..."] \
 		-command do_options
 }
 
@@ -3031,8 +3028,8 @@ if {[is_enabled multicommit] || [is_enabled singlecommit]} {
 	set tools_menubar .mbar.tools
 	menu $tools_menubar
 	$tools_menubar add separator
-	$tools_menubar add command -label [mc "·s¼W..."] -command tools_add::dialog
-	$tools_menubar add command -label [mc "²¾°£..."] -command tools_remove::dialog
+	$tools_menubar add command -label [mc "æ–°å¢..."] -command tools_add::dialog
+	$tools_menubar add command -label [mc "ç§»é™¤..."] -command tools_remove::dialog
 	set tools_tailcnt 3
 	if {[array names repo_config guitool.*.cmd] ne {}} {
 		tools_populate_all
@@ -3041,15 +3038,15 @@ if {[is_enabled multicommit] || [is_enabled singlecommit]} {
 
 # -- Help Menu
 #
-.mbar add cascade -label [mc »¡©ú] -menu .mbar.help
+.mbar add cascade -label [mc èªªæ˜] -menu .mbar.help
 menu .mbar.help
 
 if {[is_MacOSX]} {
-	.mbar.apple add command -label [mc "Ãö©ó %s" [appname]] \
+	.mbar.apple add command -label [mc "é—œæ–¼ %s" [appname]] \
 		-command do_about
 	.mbar.apple add separator
 } else {
-	.mbar.help add command -label [mc "Ãö©ó %s" [appname]] \
+	.mbar.help add command -label [mc "é—œæ–¼ %s" [appname]] \
 		-command do_about
 }
 . configure -menu .mbar
@@ -3069,10 +3066,10 @@ proc start_browser {url} {
 	git "web--browse" $url
 }
 
-.mbar.help add command -label [mc "½u¤W¤å¥ó"] \
+.mbar.help add command -label [mc "ç·šä¸Šæ–‡ä»¶"] \
 	-command [list start_browser $doc_url]
 
-.mbar.help add command -label [mc "Åã¥Ü SSH ª÷Æ_"] \
+.mbar.help add command -label [mc "é¡¯ç¤º SSH é‡‘é‘°"] \
 	-command do_ssh_key
 
 unset doc_path doc_url
@@ -3102,11 +3099,11 @@ unset m1b_w_script
 
 set subcommand_args {}
 proc usage {} {
-	set s "[mc ¥Îªk:] $::argv0 $::subcommand $::subcommand_args"
+	set s "[mc ç”¨æ³•:] $::argv0 $::subcommand $::subcommand_args"
 	if {[tk windowingsystem] eq "win32"} {
 		wm withdraw .
 		tk_messageBox -icon info -message $s \
-			-title [mc "¥Îªk"]
+			-title [mc "ç”¨æ³•"]
 	} else {
 		puts stderr $s
 	}
@@ -3187,7 +3184,7 @@ blame {
 					set head [git rev-parse --verify $head]
 				} err]} {
 				if {[tk windowingsystem] eq "win32"} {
-					tk_messageBox -icon error -title [mc ¿ù»~] -message $err
+					tk_messageBox -icon error -title [mc éŒ¯èª¤] -message $err
 				} else {
 					puts stderr $err
 				}
@@ -3217,8 +3214,8 @@ blame {
 			tk_messageBox \
 				-icon error \
 				-type ok \
-				-title [mc "git-gui: ÄY­«¿ù»~"] \
-				-message [mc "ÄY­«¡GµLªk²Î­p¸ô®| %s¡G¨S¦³¦¹ÀÉ®×©Î¥Ø¿ı" $path]
+				-title [mc "git-gui: åš´é‡éŒ¯èª¤"] \
+				-message [mc "åš´é‡ï¼šç„¡æ³•çµ±è¨ˆè·¯å¾‘ %sï¼šæ²’æœ‰æ­¤æª”æ¡ˆæˆ–ç›®éŒ„" $path]
 			exit 1
 		}
 		blame::new $head $path $jump_spec
@@ -3238,7 +3235,7 @@ default {
 	if {[tk windowingsystem] eq "win32"} {
 		wm withdraw .
 		tk_messageBox -icon error -message $err \
-			-title [mc "¥Îªk"]
+			-title [mc "ç”¨æ³•"]
 	} else {
 		puts stderr $err
 	}
@@ -3251,7 +3248,7 @@ default {
 ${NS}::frame .branch
 if {!$use_ttk} {.branch configure -borderwidth 1 -relief sunken}
 ${NS}::label .branch.l1 \
-	-text [mc "·í«e¤À¤ä¡G"] \
+	-text [mc "ç•¶å‰åˆ†æ”¯ï¼š"] \
 	-anchor w \
 	-justify left
 ${NS}::label .branch.cb \
@@ -3276,7 +3273,7 @@ pack .vpane -anchor n -side top -fill both -expand 1
 # -- Working Directory File List
 
 textframe .vpane.files.workdir -height 100 -width 200
-tlabel .vpane.files.workdir.title -text [mc "¥¼¼È¦sªºÅÜ§ó"] \
+tlabel .vpane.files.workdir.title -text [mc "æœªæš«å­˜çš„è®Šæ›´"] \
 	-background lightsalmon -foreground black
 ttext $ui_workdir \
 	-borderwidth 0 \
@@ -3298,7 +3295,7 @@ pack $ui_workdir -side left -fill both -expand 1
 #
 textframe .vpane.files.index -height 100 -width 200
 tlabel .vpane.files.index.title \
-	-text [mc "¤w¼È¦sªºÅÜ§ó¡]±N´£¥æ¡^"] \
+	-text [mc "å·²æš«å­˜çš„è®Šæ›´ï¼ˆå°‡æäº¤ï¼‰"] \
 	-background lightgreen -foreground black
 ttext $ui_index \
 	-borderwidth 0 \
@@ -3377,20 +3374,20 @@ ${NS}::label .vpane.lower.commarea.buttons.l -text {} \
 pack .vpane.lower.commarea.buttons.l -side top -fill x
 pack .vpane.lower.commarea.buttons -side left -fill y
 
-${NS}::button .vpane.lower.commarea.buttons.rescan -text [mc ­«·s±½´y] \
+${NS}::button .vpane.lower.commarea.buttons.rescan -text [mc é‡æ–°æƒæ] \
 	-command ui_do_rescan
 pack .vpane.lower.commarea.buttons.rescan -side top -fill x
 lappend disable_on_lock \
 	{.vpane.lower.commarea.buttons.rescan conf -state}
 
-${NS}::button .vpane.lower.commarea.buttons.incall -text [mc "¼È¦s¤w­×§ï"] \
+${NS}::button .vpane.lower.commarea.buttons.incall -text [mc "æš«å­˜å·²ä¿®æ”¹"] \
 	-command do_add_all
 pack .vpane.lower.commarea.buttons.incall -side top -fill x
 lappend disable_on_lock \
 	{.vpane.lower.commarea.buttons.incall conf -state}
 
 if {![is_enabled nocommitmsg]} {
-	${NS}::button .vpane.lower.commarea.buttons.signoff -text [mc "Ã±¸p"] \
+	${NS}::button .vpane.lower.commarea.buttons.signoff -text [mc "ç°½ç½²"] \
 		-command do_signoff
 	pack .vpane.lower.commarea.buttons.signoff -side top -fill x
 }
@@ -3402,7 +3399,7 @@ lappend disable_on_lock \
 	{.vpane.lower.commarea.buttons.commit conf -state}
 
 if {![is_enabled nocommit]} {
-	${NS}::button .vpane.lower.commarea.buttons.push -text [mc ±À°e] \
+	${NS}::button .vpane.lower.commarea.buttons.push -text [mc æ¨é€] \
 		-command do_push_anywhere
 	pack .vpane.lower.commarea.buttons.push -side top -fill x
 }
@@ -3416,7 +3413,7 @@ set ui_coml .vpane.lower.commarea.buffer.header.l
 
 if {![is_enabled nocommit]} {
 	${NS}::checkbutton .vpane.lower.commarea.buffer.header.amend \
-		-text [mc "­×¥¿¤W¤@¦¸´£¥æ"] \
+		-text [mc "ä¿®æ­£ä¸Šä¸€æ¬¡æäº¤"] \
 		-variable commit_type_is_amend \
 		-command do_select_commit_type
 	lappend disable_on_lock \
@@ -3429,12 +3426,12 @@ ${NS}::label $ui_coml \
 proc trace_commit_type {varname args} {
 	global ui_coml commit_type
 	switch -glob -- $commit_type {
-	initial       {set txt [mc "ªì©l´£¥æ°T®§¡G"]}
-	amend         {set txt [mc "­×¥¿«áªº´£¥æ°T®§¡G"]}
-	amend-initial {set txt [mc "­×¥¿«áªºªì©l´£¥æ°T®§¡G"]}
-	amend-merge   {set txt [mc "­×¥¿«áªº¦X¨Ö´£¥æ°T®§¡G"]}
-	merge         {set txt [mc "¦X¨Ö´£¥æ°T®§¡G"]}
-	*             {set txt [mc "´£¥æ°T®§¡G"]}
+	initial       {set txt [mc "åˆå§‹æäº¤è¨Šæ¯ï¼š"]}
+	amend         {set txt [mc "ä¿®æ­£å¾Œçš„æäº¤è¨Šæ¯ï¼š"]}
+	amend-initial {set txt [mc "ä¿®æ­£å¾Œçš„åˆå§‹æäº¤è¨Šæ¯ï¼š"]}
+	amend-merge   {set txt [mc "ä¿®æ­£å¾Œçš„åˆä½µæäº¤è¨Šæ¯ï¼š"]}
+	merge         {set txt [mc "åˆä½µæäº¤è¨Šæ¯ï¼š"]}
+	*             {set txt [mc "æäº¤è¨Šæ¯ï¼š"]}
 	}
 	$ui_coml conf -text $txt
 }
@@ -3477,23 +3474,23 @@ pack .vpane.lower.commarea.buffer -side left -fill y
 set ctxm .vpane.lower.commarea.buffer.ctxm
 menu $ctxm -tearoff 0
 $ctxm add command \
-	-label [mc °Å¤U] \
+	-label [mc å‰ªä¸‹] \
 	-command {tk_textCut $ui_comm}
 $ctxm add command \
-	-label [mc ½Æ»s] \
+	-label [mc è¤‡è£½] \
 	-command {tk_textCopy $ui_comm}
 $ctxm add command \
-	-label [mc ¶K¤W] \
+	-label [mc è²¼ä¸Š] \
 	-command {tk_textPaste $ui_comm}
 $ctxm add command \
-	-label [mc §R°£] \
+	-label [mc åˆªé™¤] \
 	-command {catch {$ui_comm delete sel.first sel.last}}
 $ctxm add separator
 $ctxm add command \
-	-label [mc "¥ş¿ï"] \
+	-label [mc "å…¨é¸"] \
 	-command {focus $ui_comm;$ui_comm tag add sel 0.0 end}
 $ctxm add command \
-	-label [mc "½Æ»s¥ş³¡"] \
+	-label [mc "è¤‡è£½å…¨éƒ¨"] \
 	-command {
 		$ui_comm tag add sel 0.0 end
 		tk_textCopy $ui_comm
@@ -3501,7 +3498,7 @@ $ctxm add command \
 	}
 $ctxm add separator
 $ctxm add command \
-	-label [mc "Ã±¸p"] \
+	-label [mc "ç°½ç½²"] \
 	-command do_signoff
 set ui_comm_ctxm $ctxm
 
@@ -3517,7 +3514,7 @@ proc trace_current_diff_path {varname args} {
 	} else {
 		set p $current_diff_path
 		set s [mapdesc [lindex $file_states($p) 0] $p]
-		set f [mc "ÀÉ®×¡G"]
+		set f [mc "æª”æ¡ˆï¼š"]
 		set p [escape_path $p]
 		set o normal
 	}
@@ -3556,7 +3553,7 @@ pack .vpane.lower.diff.header.path -fill x
 set ctxm .vpane.lower.diff.header.ctxm
 menu $ctxm -tearoff 0
 $ctxm add command \
-	-label [mc ½Æ»s] \
+	-label [mc è¤‡è£½] \
 	-command {
 		clipboard clear
 		clipboard append \
@@ -3565,7 +3562,7 @@ $ctxm add command \
 			-- $current_diff_path
 	}
 $ctxm add command \
-	-label [mc ¶}±Ò] \
+	-label [mc é–‹å•Ÿ] \
 	-command {do_file_open $current_diff_path}
 lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 bind_button3 .vpane.lower.diff.header.path "tk_popup $ctxm %X %Y"
@@ -3647,19 +3644,19 @@ $ui_diff tag raise sel
 
 proc create_common_diff_popup {ctxm} {
 	$ctxm add command \
-		-label [mc ­«·s¾ã²z] \
+		-label [mc é‡æ–°æ•´ç†] \
 		-command reshow_diff
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add command \
-		-label [mc ½Æ»s] \
+		-label [mc è¤‡è£½] \
 		-command {tk_textCopy $ui_diff}
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add command \
-		-label [mc "¥ş¿ï"] \
+		-label [mc "å…¨é¸"] \
 		-command {focus $ui_diff;$ui_diff tag add sel 0.0 end}
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add command \
-		-label [mc "½Æ»s¥ş³¡"] \
+		-label [mc "è¤‡è£½å…¨éƒ¨"] \
 		-command {
 			$ui_diff tag add sel 0.0 end
 			tk_textCopy $ui_diff
@@ -3668,11 +3665,11 @@ proc create_common_diff_popup {ctxm} {
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add separator
 	$ctxm add command \
-		-label [mc "ÁY¤p¦r«¬"] \
+		-label [mc "ç¸®å°å­—å‹"] \
 		-command {incr_font_size font_diff -1}
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add command \
-		-label [mc "¼W¤j¦r«¬"] \
+		-label [mc "å¢å¤§å­—å‹"] \
 		-command {incr_font_size font_diff 1}
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add separator
@@ -3680,49 +3677,49 @@ proc create_common_diff_popup {ctxm} {
 	menu $emenu
 	build_encoding_menu $emenu [list force_diff_encoding]
 	$ctxm add cascade \
-		-label [mc "½s½X"] \
+		-label [mc "ç·¨ç¢¼"] \
 		-menu $emenu
 	lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 	$ctxm add separator
-	$ctxm add command -label [mc "¿ï¶µ..."] \
+	$ctxm add command -label [mc "é¸é …..."] \
 		-command do_options
 }
 
 set ctxm .vpane.lower.diff.body.ctxm
 menu $ctxm -tearoff 0
 $ctxm add command \
-	-label [mc "®M¥Î/¤Ï¦V¶ô"] \
+	-label [mc "å¥—ç”¨/åå‘å¡Š"] \
 	-command {apply_or_revert_hunk $cursorX $cursorY 0}
 set ui_diff_applyhunk [$ctxm index last]
 lappend diff_actions [list $ctxm entryconf $ui_diff_applyhunk -state]
 $ctxm add command \
-	-label [mc "®M¥Î/¤Ï¦V¦æ"] \
+	-label [mc "å¥—ç”¨/åå‘è¡Œ"] \
 	-command {apply_or_revert_range_or_line $cursorX $cursorY 0; do_rescan}
 set ui_diff_applyline [$ctxm index last]
 lappend diff_actions [list $ctxm entryconf $ui_diff_applyline -state]
 $ctxm add separator
 $ctxm add command \
-	-label [mc "ÁÙ­ì¶ô"] \
+	-label [mc "é‚„åŸå¡Š"] \
 	-command {apply_or_revert_hunk $cursorX $cursorY 1}
 set ui_diff_reverthunk [$ctxm index last]
 lappend diff_actions [list $ctxm entryconf $ui_diff_reverthunk -state]
 $ctxm add command \
-	-label [mc "ÁÙ­ì¦æ"] \
+	-label [mc "é‚„åŸè¡Œ"] \
 	-command {apply_or_revert_range_or_line $cursorX $cursorY 1; do_rescan}
 set ui_diff_revertline [$ctxm index last]
 lappend diff_actions [list $ctxm entryconf $ui_diff_revertline -state]
 $ctxm add command \
-	-label [mc "´_­ì¤W¤@¦¸ÁÙ­ì"] \
+	-label [mc "å¾©åŸä¸Šä¸€æ¬¡é‚„åŸ"] \
 	-command {undo_last_revert; do_rescan}
 set ui_diff_undorevert [$ctxm index last]
 lappend diff_actions [list $ctxm entryconf $ui_diff_undorevert -state]
 $ctxm add separator
 $ctxm add command \
-	-label [mc "Åã¥Ü¸û¤Ö¤W¤U¤å"] \
+	-label [mc "é¡¯ç¤ºè¼ƒå°‘ä¸Šä¸‹æ–‡"] \
 	-command show_less_context
 lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 $ctxm add command \
-	-label [mc "Åã¥Ü§ó¦h¤W¤U¤å"] \
+	-label [mc "é¡¯ç¤ºæ›´å¤šä¸Šä¸‹æ–‡"] \
 	-command show_more_context
 lappend diff_actions [list $ctxm entryconf [$ctxm index last] -state]
 $ctxm add separator
@@ -3731,29 +3728,29 @@ create_common_diff_popup $ctxm
 set ctxmmg .vpane.lower.diff.body.ctxmmg
 menu $ctxmmg -tearoff 0
 $ctxmmg add command \
-	-label [mc "°õ¦æ¦X¨Ö¤u¨ã"] \
+	-label [mc "åŸ·è¡Œåˆä½µå·¥å…·"] \
 	-command {merge_resolve_tool}
 lappend diff_actions [list $ctxmmg entryconf [$ctxmmg index last] -state]
 $ctxmmg add separator
 $ctxmmg add command \
-	-label [mc "¨Ï¥Î»·ºİª©¥»"] \
+	-label [mc "ä½¿ç”¨é ç«¯ç‰ˆæœ¬"] \
 	-command {merge_resolve_one 3}
 lappend diff_actions [list $ctxmmg entryconf [$ctxmmg index last] -state]
 $ctxmmg add command \
-	-label [mc "¨Ï¥Î¥»¦aª©¥»"] \
+	-label [mc "ä½¿ç”¨æœ¬åœ°ç‰ˆæœ¬"] \
 	-command {merge_resolve_one 2}
 lappend diff_actions [list $ctxmmg entryconf [$ctxmmg index last] -state]
 $ctxmmg add command \
-	-label [mc "ÁÙ­ì¦Ü°ò©³"] \
+	-label [mc "é‚„åŸè‡³åŸºåº•"] \
 	-command {merge_resolve_one 1}
 lappend diff_actions [list $ctxmmg entryconf [$ctxmmg index last] -state]
 $ctxmmg add separator
 $ctxmmg add command \
-	-label [mc "Åã¥Ü¸û¤Ö¤W¤U¤å"] \
+	-label [mc "é¡¯ç¤ºè¼ƒå°‘ä¸Šä¸‹æ–‡"] \
 	-command show_less_context
 lappend diff_actions [list $ctxmmg entryconf [$ctxmmg index last] -state]
 $ctxmmg add command \
-	-label [mc "Åã¥Ü¸û§ó¦h¤U¤å"] \
+	-label [mc "é¡¯ç¤ºè¼ƒæ›´å¤šä¸‹æ–‡"] \
 	-command show_more_context
 lappend diff_actions [list $ctxmmg entryconf [$ctxmmg index last] -state]
 $ctxmmg add separator
@@ -3762,20 +3759,20 @@ create_common_diff_popup $ctxmmg
 set ctxmsm .vpane.lower.diff.body.ctxmsm
 menu $ctxmsm -tearoff 0
 $ctxmsm add command \
-	-label [mc "¦b¤l¼Ò²Õ¤¤µøÄ±¤Æ³o¨ÇÅÜ§ó"] \
+	-label [mc "åœ¨å­æ¨¡çµ„ä¸­è¦–è¦ºåŒ–é€™äº›è®Šæ›´"] \
 	-command {do_gitk -- true}
 lappend diff_actions [list $ctxmsm entryconf [$ctxmsm index last] -state]
 $ctxmsm add command \
-	-label [mc "¦b¤l¼Ò²Õ¤¤µøÄ±¤Æ·í«e¤À¤ä¾ú¥v°O¿ı"] \
+	-label [mc "åœ¨å­æ¨¡çµ„ä¸­è¦–è¦ºåŒ–ç•¶å‰åˆ†æ”¯æ­·å²è¨˜éŒ„"] \
 	-command {do_gitk {} true}
 lappend diff_actions [list $ctxmsm entryconf [$ctxmsm index last] -state]
 $ctxmsm add command \
-	-label [mc "¦b¤l¼Ò²Õ¤¤µøÄ±¤Æ©Ò¦³¤À¤ä¾ú¥v°O¿ı"] \
+	-label [mc "åœ¨å­æ¨¡çµ„ä¸­è¦–è¦ºåŒ–æ‰€æœ‰åˆ†æ”¯æ­·å²è¨˜éŒ„"] \
 	-command {do_gitk --all true}
 lappend diff_actions [list $ctxmsm entryconf [$ctxmsm index last] -state]
 $ctxmsm add separator
 $ctxmsm add command \
-	-label [mc "¦b¤l¼Ò²Õ¤¤±Ò°Ê Git GUI"] \
+	-label [mc "åœ¨å­æ¨¡çµ„ä¸­å•Ÿå‹• Git GUI"] \
 	-command {do_git_gui}
 lappend diff_actions [list $ctxmsm entryconf [$ctxmsm index last] -state]
 $ctxmsm add separator
@@ -3809,28 +3806,28 @@ proc popup_diff_menu {ctxm ctxmmg ctxmsm x y X Y} {
 		tk_popup $ctxmsm $X $Y
 	} else {
 		set has_range [expr {[$::ui_diff tag nextrange sel 0.0] != {}}]
-		set u [mc "´_­ì¤W¤@¦¸ÁÙ­ì"]
+		set u [mc "å¾©åŸä¸Šä¸€æ¬¡é‚„åŸ"]
 		if {$::ui_index eq $::current_diff_side} {
-			set l [mc "±q´£¥æ¤¤¨ú®ø¼È¦s¶ô"]
-			set h [mc "ÁÙ­ì¶ô"]
+			set l [mc "å¾æäº¤ä¸­å–æ¶ˆæš«å­˜å¡Š"]
+			set h [mc "é‚„åŸå¡Š"]
 
 			if {$has_range} {
-				set t [mc "±q´£¥æ¤¤¨ú®ø¼È¦s¦æ"]
-				set r [mc "ÁÙ­ì¦æ"]
+				set t [mc "å¾æäº¤ä¸­å–æ¶ˆæš«å­˜è¡Œ"]
+				set r [mc "é‚„åŸè¡Œ"]
 			} else {
-				set t [mc "±q´£¥æ¤¤¨ú®ø¼È¦s¦æ"]
-				set r [mc "ÁÙ­ì¦æ"]
+				set t [mc "å¾æäº¤ä¸­å–æ¶ˆæš«å­˜è¡Œ"]
+				set r [mc "é‚„åŸè¡Œ"]
 			}
 		} else {
-			set l [mc "±N¶ô¼È¦s¥H´£¥æ"]
-			set h [mc "ÁÙ­ì¶ô"]
+			set l [mc "å°‡å¡Šæš«å­˜ä»¥æäº¤"]
+			set h [mc "é‚„åŸå¡Š"]
 
 			if {$has_range} {
-				set t [mc "±N¦æ¼È¦s¥H´£¥æ"]
-				set r [mc "ÁÙ­ì¦æ"]
+				set t [mc "å°‡è¡Œæš«å­˜ä»¥æäº¤"]
+				set r [mc "é‚„åŸè¡Œ"]
 			} else {
-				set t [mc "±N¦æ¼È¦s¥H´£¥æ"]
-				set r [mc "ÁÙ­ì¦æ"]
+				set t [mc "å°‡è¡Œæš«å­˜ä»¥æäº¤"]
+				set r [mc "é‚„åŸè¡Œ"]
 			}
 		}
 		if {$::is_3way_diff
@@ -3879,7 +3876,7 @@ bind_button3 $ui_diff [list popup_diff_menu $ctxm $ctxmmg $ctxmsm %x %y %X %Y]
 #
 set main_status [::status_bar::new .status]
 pack .status -anchor w -side bottom -fill x
-$main_status show [mc "¥¿¦bªì©l¤Æ..."]
+$main_status show [mc "æ­£åœ¨åˆå§‹åŒ–..."]
 
 # -- Load geometry
 #
